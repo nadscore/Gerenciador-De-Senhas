@@ -26,21 +26,117 @@ public class TelaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnSenhaNormal = new javax.swing.JButton();
+        btnSenhaPref = new javax.swing.JButton();
+        btnChamar = new javax.swing.JButton();
+        btnListar = new javax.swing.JButton();
+        btnRelatorios = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblSenha = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnSenhaNormal.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnSenhaNormal.setText("GERAR SENHA NORMAL");
+        btnSenhaNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSenhaNormalActionPerformed(evt);
+            }
+        });
+
+        btnSenhaPref.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnSenhaPref.setText("GERAR SENHA PREFERENCIAL");
+
+        btnChamar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnChamar.setText("CHAMAR SENHA");
+
+        btnListar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnListar.setText("LISTAR SENHAS");
+
+        btnRelatorios.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnRelatorios.setText("RELATÓRIOS");
+        btnRelatorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatoriosActionPerformed(evt);
+            }
+        });
+
+        btnSair.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnSair.setText("SAIR DO PROGRAMA");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
+        jLabel1.setText("SENHA:");
+
+        lblSenha.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        lblSenha.setForeground(new java.awt.Color(102, 0, 0));
+        lblSenha.setText("0");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel2.setText("GERENCIADOR DE SENHAS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnSenhaNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSenhaPref, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnChamar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(75, 75, 75)
+                                .addComponent(lblSenha))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel2)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSenha)
+                    .addComponent(jLabel1))
+                .addGap(36, 36, 36)
+                .addComponent(btnSenhaNormal)
+                .addGap(18, 18, 18)
+                .addComponent(btnSenhaPref)
+                .addGap(18, 18, 18)
+                .addComponent(btnChamar)
+                .addGap(18, 18, 18)
+                .addComponent(btnListar)
+                .addGap(18, 18, 18)
+                .addComponent(btnRelatorios)
+                .addGap(18, 18, 18)
+                .addComponent(btnSair)
+                .addGap(65, 65, 65))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRelatoriosActionPerformed
+
+    private void btnSenhaNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSenhaNormalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSenhaNormalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +174,14 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChamar;
+    private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnRelatorios;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSenhaNormal;
+    private javax.swing.JButton btnSenhaPref;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblSenha;
     // End of variables declaration//GEN-END:variables
 }
