@@ -4,17 +4,23 @@
  */
 package classes;
 
-/**
- *
- * @author User
- */
-public class TelaMenu extends javax.swing.JFrame {
+import classes.Fila;
+import classes.Senha;
+import classes.TelaGerarSenha;
+import classes.TelaChamarSenha;
+import classes.TelaListarSenhas;
 
-    /**
-     * Creates new form TelaMenu
-     */
-    public TelaMenu() {
+public class TelaMenu extends javax.swing.JFrame {
+    private Fila fila; //Instância da fila para armazenar as senhas
+    private int contadorNormal; // Contador para gerar número de senhas normais
+    private int contadorPreferencial; // Contador para gerar número de senhas preferenciais
+
+    
+    public TelaMenu(Fila fila) {
         initComponents();
+        this.fila = fila;
+        contadorNormal = fila.getUltimaSenhaNormal() + 1; // Inicia o contador normal com o último número da fila
+        contadorPreferencial = fila.getUltimaSenhaPreferencial() + 1; // Inicia o contador preferencial com o último número da fila
     }
 
     /**
@@ -32,11 +38,10 @@ public class TelaMenu extends javax.swing.JFrame {
         btnListar = new javax.swing.JButton();
         btnRelatorios = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        lblSenha = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         btnSenhaNormal.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnSenhaNormal.setText("GERAR SENHA NORMAL");
@@ -48,12 +53,27 @@ public class TelaMenu extends javax.swing.JFrame {
 
         btnSenhaPref.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnSenhaPref.setText("GERAR SENHA PREFERENCIAL");
+        btnSenhaPref.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSenhaPrefActionPerformed(evt);
+            }
+        });
 
         btnChamar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnChamar.setText("CHAMAR SENHA");
+        btnChamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChamarActionPerformed(evt);
+            }
+        });
 
         btnListar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnListar.setText("LISTAR SENHAS");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
 
         btnRelatorios.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnRelatorios.setText("RELATÓRIOS");
@@ -65,13 +85,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         btnSair.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnSair.setText("SAIR DO PROGRAMA");
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
-        jLabel1.setText("SENHA:");
-
-        lblSenha.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        lblSenha.setForeground(new java.awt.Color(102, 0, 0));
-        lblSenha.setText("0");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel2.setText("GERENCIADOR DE SENHAS");
@@ -83,24 +101,19 @@ public class TelaMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnSenhaNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnSenhaPref, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnChamar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(75, 75, 75)
-                                .addComponent(lblSenha))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnSenhaNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSenhaPref, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnChamar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -108,11 +121,7 @@ public class TelaMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha)
-                    .addComponent(jLabel1))
-                .addGap(36, 36, 36)
+                .addGap(83, 83, 83)
                 .addComponent(btnSenhaNormal)
                 .addGap(18, 18, 18)
                 .addComponent(btnSenhaPref)
@@ -124,7 +133,7 @@ public class TelaMenu extends javax.swing.JFrame {
                 .addComponent(btnRelatorios)
                 .addGap(18, 18, 18)
                 .addComponent(btnSair)
-                .addGap(65, 65, 65))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,13 +144,42 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRelatoriosActionPerformed
 
     private void btnSenhaNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSenhaNormalActionPerformed
-        // TODO add your handling code here:
+        // Gera uma senha normal e cria a tela de geração
+        Senha senhaNormal = new Senha(contadorNormal++, "n");
+        fila.adicionarSenhaNormal(senhaNormal);
+        // Exibe a tela GerarSenha com a senha gerada e também o tipo (normal ou preferencial)
+        new TelaGerarSenha(String.valueOf(senhaNormal.getNumero()), "Normal").setVisible(true);
     }//GEN-LAST:event_btnSenhaNormalActionPerformed
+
+    private void btnSenhaPrefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSenhaPrefActionPerformed
+        // Gera uma senha preferencial e cria a tela de geração
+        Senha senhaPref = new Senha(contadorPreferencial++, "p");
+        fila.adicionarSenhaPreferencial(senhaPref);
+    
+        // Exibe a tela GerarSenha com a senha gerada e também o tipo (normal ou preferencial)
+        new TelaGerarSenha(String.valueOf(senhaPref.getNumero()), "Preferencial").setVisible(true);
+    }//GEN-LAST:event_btnSenhaPrefActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        TelaListarSenhas tela = new TelaListarSenhas(fila);
+        tela.setVisible(true);
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnChamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChamarActionPerformed
+        TelaChamarSenha tela = new TelaChamarSenha(fila);
+        tela.setVisible(true);
+    
+    }//GEN-LAST:event_btnChamarActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        Fila fila = new Fila();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -168,7 +206,7 @@ public class TelaMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaMenu().setVisible(true);
+                new TelaMenu(fila).setVisible(true);
             }
         });
     }
@@ -180,8 +218,6 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSenhaNormal;
     private javax.swing.JButton btnSenhaPref;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblSenha;
     // End of variables declaration//GEN-END:variables
 }
