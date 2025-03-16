@@ -21,7 +21,6 @@ public class Teste {
         fila.adicionarSenhaPreferencial(senha5);
 
         // Exibindo as senhas na fila
-        System.out.println("Fila de senhas (com preferenciais primeiro):");
-        fila.listarSenhas(); // Supondo que a fila tem um método para listar as senhas
+        
     }
 }
