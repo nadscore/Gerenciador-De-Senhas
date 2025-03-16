@@ -1,5 +1,6 @@
 package classes;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -8,12 +9,14 @@ public class Senha {
     private String tipo; // "n" para normal, "p" para preferencial
     private boolean atendida;
     private LocalDateTime dataHora;
+    Instant timestamp;
 
     public Senha(int numero, String tipo) {
         this.numero = numero;
         this.tipo = tipo;
         this.atendida = false;
         this.dataHora = LocalDateTime.now();
+        this.timestamp = Instant.now();
     }
 
     //Getter para o número da senha
@@ -30,5 +33,9 @@ public class Senha {
     
     public String getTipo() {
         return tipo;
+    }
+    
+    public Instant getTimestamp() {
+        return timestamp;
     }
 }

@@ -4,14 +4,8 @@
  */
 package classes;
 
-import classes.Fila;
-import classes.Senha;
-import classes.TelaGerarSenha;
-import classes.TelaChamarSenha;
-import classes.TelaListarSenhas;
-
 public class TelaMenu extends javax.swing.JFrame {
-    private Fila fila; //Instância da fila para armazenar as senhas
+    private final Fila fila; //Instância da fila para armazenar as senhas
     private int contadorNormal; // Contador para gerar número de senhas normais
     private int contadorPreferencial; // Contador para gerar número de senhas preferenciais
 
@@ -141,6 +135,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
         // TODO add your handling code here:
+        new TelaRelatorio().setVisible(true);
     }//GEN-LAST:event_btnRelatoriosActionPerformed
 
     private void btnSenhaNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSenhaNormalActionPerformed
@@ -204,10 +199,8 @@ public class TelaMenu extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaMenu(fila).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaMenu(fila).setVisible(true);
         });
     }
 
