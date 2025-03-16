@@ -16,11 +16,13 @@ public class Fila {
 
     // Adiciona uma senha normal à fila normal
     public void adicionarSenhaNormal(Senha senha) {
+        ContadorSenha.incrementarNormal();
         filaNormal.add(senha);
     }
 
     // Adiciona uma senha preferencial à fila preferencial
     public void adicionarSenhaPreferencial(Senha senha) {
+        ContadorSenha.incrementarPreferencial();
         filaPreferencial.add(senha);
     }
 
@@ -54,6 +56,10 @@ public class Fila {
             Senha ultimaSenha = ((LinkedList<Senha>) filaPreferencial).getLast();
             return ultimaSenha.getNumero();
         }
+    }
+
+    public void listarSenhas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

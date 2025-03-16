@@ -4,9 +4,8 @@
  */
 package classes;
 
-import classes.Fila;
-import classes.Senha;
-import classes.Senha;
+import java.time.Duration;
+import java.time.Instant;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,19 +13,18 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class TelaChamarSenha extends javax.swing.JFrame {
-    private Fila fila;
+    private final Fila fila;
     private Senha senhaChamada;
     private int tentativas;
     /**
      * Creates new form TelaChamarSenha
+     * @param fila
      */
     public TelaChamarSenha(Fila fila) {
         this.fila = fila;
         this.tentativas = 0; 
         initComponents();
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,6 +43,7 @@ public class TelaChamarSenha extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         btnChamar = new javax.swing.JButton();
         btnChamarNovamente = new javax.swing.JButton();
+        btnAtendidas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,9 +84,20 @@ public class TelaChamarSenha extends javax.swing.JFrame {
         btnChamarNovamente.setBackground(new java.awt.Color(153, 255, 153));
         btnChamarNovamente.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnChamarNovamente.setText("CHAMAR NOVAMENTE");
+        btnChamarNovamente.setEnabled(false);
         btnChamarNovamente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChamarNovamenteActionPerformed(evt);
+            }
+        });
+
+        btnAtendidas.setBackground(new java.awt.Color(153, 255, 153));
+        btnAtendidas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnAtendidas.setText("ATENDIDO");
+        btnAtendidas.setEnabled(false);
+        btnAtendidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtendidasActionPerformed(evt);
             }
         });
 
@@ -98,8 +108,9 @@ public class TelaChamarSenha extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnChamarNovamente, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtendidas, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChamarNovamente, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -133,29 +144,51 @@ public class TelaChamarSenha extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnChamarNovamente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btnAtendidas, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
+                .addGap(45, 45, 45))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        new TelaMenu(fila).setVisible(true);
+
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnChamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChamarActionPerformed
          if (!fila.filaPreferencial.isEmpty() || !fila.filaNormal.isEmpty()) {
             chamarProximaSenha();
+            btnChamar.setEnabled(false);
         } else {
             JOptionPane.showMessageDialog(this, "Não há senhas para chamar!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            btnChamar.setEnabled(false);
         }
     }//GEN-LAST:event_btnChamarActionPerformed
 
     private void btnChamarNovamenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChamarNovamenteActionPerformed
         chamarNovamente();
     }//GEN-LAST:event_btnChamarNovamenteActionPerformed
+
+    private void btnAtendidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtendidasActionPerformed
+
+        if ("n".equals(senhaChamada.getTipo())) {
+            lblTipo.setText("-");
+            lblSenhaChamada.setText("-");
+            ContadorSenha.incrementarNormaisAtendidas();
+        } else if ("p".equals(senhaChamada.getTipo())) {
+            lblTipo.setText("-");
+            lblSenhaChamada.setText("-");
+            ContadorSenha.incrementarPreferenciaisAtendidas(); 
+        } 
+
+        btnChamar.setEnabled(true);
+        btnChamarNovamente.setEnabled(false);
+        btnAtendidas.setEnabled(false);
+        
+    }//GEN-LAST:event_btnAtendidasActionPerformed
 
     private void chamarProximaSenha() {
         if (!fila.filaPreferencial.isEmpty()) {
@@ -175,6 +208,7 @@ public class TelaChamarSenha extends javax.swing.JFrame {
         // Atualiza a tela com o número da senha chamada
         if (senhaChamada != null) {
             lblSenhaChamada.setText(String.valueOf(senhaChamada.getNumero()));
+            ContadorSenha.incrementarTimestamps(Duration.between(senhaChamada.getTimestamp(), Instant.now()).getSeconds());
         } else {
             lblSenhaChamada.setText("Vazia");
         }
@@ -182,6 +216,7 @@ public class TelaChamarSenha extends javax.swing.JFrame {
         // Atualiza o botão de chamar novamente
         tentativas = 0;
         btnChamarNovamente.setEnabled(true);
+        btnAtendidas.setEnabled(true);
     }
 
 
@@ -190,10 +225,15 @@ public class TelaChamarSenha extends javax.swing.JFrame {
             tentativas++;
             lblSenhaChamada.setText(String.valueOf(senhaChamada.getNumero()));  
         }
-
+        
         if (tentativas >= 3) {
             btnChamarNovamente.setEnabled(false);  // Bloqueia o botão após 3 tentativas
             fila.moverParaFilaAuxiliar(senhaChamada); // Move a senha para a fila auxiliar
+            ContadorSenha.incrementarNaoAtendidas();
+            lblSenhaChamada.setText("-");
+            lblTipo.setText("-");
+            btnChamar.setEnabled(true);
+            btnAtendidas.setEnabled(false);
         }
     }
 
@@ -225,15 +265,14 @@ public class TelaChamarSenha extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                 Fila fila = new Fila();
-                new TelaChamarSenha(fila).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            Fila fila1 = new Fila();
+            new TelaChamarSenha(fila1).setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtendidas;
     private javax.swing.JButton btnChamar;
     private javax.swing.JButton btnChamarNovamente;
     private javax.swing.JButton btnVoltar;

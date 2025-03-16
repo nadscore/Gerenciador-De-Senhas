@@ -39,6 +39,7 @@ public class TelaGerarSenha extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblTipoSenha = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        Voltar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,16 @@ public class TelaGerarSenha extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel4.setText("SENHA:");
 
+        Voltar1.setBackground(new java.awt.Color(153, 255, 153));
+        Voltar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Voltar1.setText("VOLTAR");
+        Voltar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Voltar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Voltar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,9 +78,12 @@ public class TelaGerarSenha extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addComponent(jLabel4)
-                        .addGap(63, 63, 63)
-                        .addComponent(lblSenha)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Voltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(63, 63, 63)
+                                .addComponent(lblSenha)))
                         .addGap(5, 5, 5)
                         .addComponent(lblTipoSenha)
                         .addGap(37, 37, 37)
@@ -87,13 +101,20 @@ public class TelaGerarSenha extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(lblTipoSenha)
                     .addComponent(jLabel4))
-                .addContainerGap(377, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                .addComponent(Voltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110))
         );
 
         lblTipoSenha.getAccessibleContext().setAccessibleName("lblTipoSenha");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Voltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Voltar1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose(); // Fecha a TelaRelatório
+    }//GEN-LAST:event_Voltar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,6 +152,7 @@ public class TelaGerarSenha extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Voltar1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
