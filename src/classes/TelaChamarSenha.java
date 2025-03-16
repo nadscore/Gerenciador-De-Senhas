@@ -4,9 +4,8 @@
  */
 package classes;
 
-import classes.Fila;
-import classes.Senha;
-import classes.Senha;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,11 +18,45 @@ public class TelaChamarSenha extends javax.swing.JFrame {
     private int tentativas;
     /**
      * Creates new form TelaChamarSenha
+     * @param fila
      */
     public TelaChamarSenha(Fila fila) {
         this.fila = fila;
         this.tentativas = 0; 
         initComponents();
+    }
+    
+    // Getters e Setters para btnChamar, lblSenhaChamada e lblTipo
+    public JButton getBtnChamar() {
+        return btnChamar;
+    }
+
+    public void setBtnChamar(JButton btnChamar) {
+        this.btnChamar = btnChamar;
+    }
+    
+    public JButton getBtnChamarNovamente() {
+        return btnChamarNovamente;
+    }
+
+    public void setBtnChamarNovamente(JButton btnChamarNovamente) {
+        this.btnChamarNovamente = btnChamarNovamente;
+    }
+
+    public JLabel getLblSenhaChamada() {
+        return lblSenhaChamada;
+    }
+
+    public void setLblSenhaChamada(JLabel lblSenhaChamada) {
+        this.lblSenhaChamada = lblSenhaChamada;
+    }
+
+    public JLabel getLblTipo() {
+        return lblTipo;
+    }
+
+    public void setLblTipo(JLabel lblTipo) {
+        this.lblTipo = lblTipo;
     }
 
 
@@ -243,4 +276,5 @@ public class TelaChamarSenha extends javax.swing.JFrame {
     private javax.swing.JLabel lblSenhaChamada;
     private javax.swing.JLabel lblTipo;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package classes;
 
 import javax.swing.DefaultListModel;
@@ -18,7 +14,25 @@ public class TelaListarSenhas extends javax.swing.JFrame {
         this.fila = fila;
         listarSenhas();
     }
+    
+    public javax.swing.JList<String> getListaSenhas() {
+    return listaSenhas;
+}
 
+    // Setter para modificar listaSenhas nos testes (se necessário)
+    public void setListaSenhas(javax.swing.JList<String> listaSenhas) {
+        this.listaSenhas = listaSenhas;
+    }
+    
+    // Getter para acessar o modelo de lista que listarSenhas() manipula
+    public DefaultListModel<String> getListaModel() {
+        return (DefaultListModel<String>) listaSenhas.getModel();
+    }
+
+    // (Opcional) Criar um setter para poder chamar listarSenhas() diretamente nos testes
+    public void setListarSenhas(DefaultListModel<String> model) {
+        listaSenhas.setModel(model);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,7 +107,7 @@ public class TelaListarSenhas extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-     private void listarSenhas() {
+     public void listarSenhas() {
         DefaultListModel<String> model = new DefaultListModel<>();
         
         // Adiciona as senhas normais à lista
