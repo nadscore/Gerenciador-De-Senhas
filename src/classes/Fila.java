@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Fila {
-    Queue<Senha> filaNormal;
-    Queue<Senha> filaPreferencial;
-    Queue<Senha> filaAuxiliar;
+    public Queue<Senha> filaNormal;
+    public Queue<Senha> filaPreferencial;
+    public Queue<Senha> filaAuxiliar;
     
     public Fila() {
         this.filaNormal = new LinkedList<>();

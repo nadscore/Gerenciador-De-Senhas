@@ -15,6 +15,15 @@ public class ContadorSenha {
     private static int contadorPreferencialAtendidas = 0;
     private static int contadorNaoAtendidas = 0;
     private static long tempoTotalDeEspera = 0;
+
+    public static void resetarContadores() {
+        contadorNormal = 0;
+        contadorPreferencial = 0;
+        contadorNormalAtendidas = 0;
+        contadorPreferencialAtendidas = 0;
+        contadorNaoAtendidas = 0;
+        tempoTotalDeEspera = 0;
+    }
     
     // Incrementa as senhas normais
     public static void incrementarNormal() {
@@ -52,6 +61,8 @@ public class ContadorSenha {
     
     // Soma Atendidas normal + preferencial
     public static int getTotalDeSenhasAtendidas() {
+        System.out.println("NORMAL ATENDIDAS " + contadorNormalAtendidas);
+        System.out.println("PREFERENCIAL ATENDIDAS " + contadorPreferencialAtendidas);
         return contadorNormalAtendidas + contadorPreferencialAtendidas;
     }
     

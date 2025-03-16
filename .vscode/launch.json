@@ -1,0 +1,56 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Teste",
+            "request": "launch",
+            "mainClass": "Teste",
+            "projectName": "Gerenciador-De-Senhas_125dc11a"
+        },
+        {
+            "type": "java",
+            "name": "TelaChamarSenha",
+            "request": "launch",
+            "mainClass": "classes.TelaChamarSenha",
+            "projectName": "Gerenciador-De-Senhas_125dc11a"
+        },
+        {
+            "type": "java",
+            "name": "TelaGerarSenha",
+            "request": "launch",
+            "mainClass": "classes.TelaGerarSenha",
+            "projectName": "Gerenciador-De-Senhas_125dc11a"
+        },
+        {
+            "type": "java",
+            "name": "TelaListarSenhas",
+            "request": "launch",
+            "mainClass": "classes.TelaListarSenhas",
+            "projectName": "Gerenciador-De-Senhas_125dc11a"
+        },
+        {
+            "type": "java",
+            "name": "TelaMenu",
+            "request": "launch",
+            "mainClass": "classes.TelaMenu",
+            "projectName": "Gerenciador-De-Senhas_125dc11a"
+        },
+        {
+            "type": "java",
+            "name": "TelaRelatorio",
+            "request": "launch",
+            "mainClass": "classes.TelaRelatorio",
+            "projectName": "Gerenciador-De-Senhas_125dc11a"
+        }
+    ]
+}
