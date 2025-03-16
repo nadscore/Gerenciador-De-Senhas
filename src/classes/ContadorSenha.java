@@ -49,6 +49,7 @@ public class ContadorSenha {
         contadorPreferencialAtendidas++;
     }
     
+    
     // Soma Atendidas normal + preferencial
     public static int getTotalDeSenhasAtendidas() {
         return contadorNormalAtendidas + contadorPreferencialAtendidas;
@@ -56,13 +57,13 @@ public class ContadorSenha {
     
     // Calcula a porcentagem de senhas normais atendidas
     public static double getPorcentagemNormal() {
-        int total = getTotalDeSenhasAtendidas();
+        int total = getContadorNormal();
         return (total == 0) ? 0 : (contadorNormalAtendidas * 100.0) / total;
     }
 
     // Calcula a porcentagem de senhas preferenciais atendidas
     public static double getPorcentagemPreferencial() {
-        int total = getTotalDeSenhasAtendidas();
+        int total = getContadorPreferencial();
         return (total == 0) ? 0 : (contadorPreferencialAtendidas * 100.0) / total;
     }
     

@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/damns/Desktop/Gerenciador-De-Senhas/src/classes/TelaRelatorio.java</file>
+            <file>file:/C:/Users/damns/Desktop/Gerenciador-De-Senhas/src/classes/TelaMenu.java</file>
+            <file>file:/C:/Users/damns/Desktop/Gerenciador-De-Senhas/src/classes/TelaChamarSenha.java</file>
+            <file>file:/C:/Users/damns/Desktop/Gerenciador-De-Senhas/src/classes/TelaGerarSenha.java</file>
+            <file>file:/C:/Users/damns/Desktop/Gerenciador-De-Senhas/src/classes/Senha.java</file>
+            <file>file:/C:/Users/damns/Desktop/Gerenciador-De-Senhas/src/classes/ContadorSenha.java</file>
+            <file>file:/C:/Users/damns/Desktop/Gerenciador-De-Senhas/src/classes/TelaListarSenhas.java</file>
+        </group>
     </open-files>
 </project-private>
