@@ -7,7 +7,6 @@ package classes;
 public class TelaRelatorio extends javax.swing.JFrame {
     
     
-    //Instância da fila para armazenar as senhas
     public TelaRelatorio() {
         initComponents();
         

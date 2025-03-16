@@ -14,12 +14,9 @@ public class TelaListarSenhasTest {
 
     @BeforeEach
     public void setUp() {
-        // Cria uma nova fila antes de cada teste
         fila = new Fila();
         tela = new TelaListarSenhas(fila);
         
-        // Chama o método listarSenhas para garantir que a lista esteja populada corretamente
-        // Não será exibida a interface gráfica aqui
         tela.listarSenhas();
     }
 
@@ -35,7 +32,6 @@ public class TelaListarSenhasTest {
         fila.adicionarSenhaNormal(new Senha(1, "n"));
         fila.adicionarSenhaNormal(new Senha(2, "n"));
 
-        // Chama listarSenhas novamente para atualizar a lista
         tela.listarSenhas();
     
         DefaultListModel<String> model = tela.getListaModel();
